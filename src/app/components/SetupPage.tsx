@@ -773,9 +773,10 @@ export function SetupPage() {
                         <td className="px-4 py-3">
                           <button
                             onClick={() => setTeachers(teachers.filter((_, i) => i !== index))}
-                            className="text-red-600 hover:text-red-700"
+                            className="text-red-500 hover:text-red-700 p-1 hover:bg-red-50 rounded-full transition-colors"
+                            title="Hapus"
                           >
-                            <Trash2 size={18} />
+                            <Trash2 size={16} />
                           </button>
                         </td>
                       </tr>
@@ -885,9 +886,10 @@ export function SetupPage() {
                         <td className="px-4 py-3">
                           <button
                             onClick={() => setRooms(rooms.filter((_, i) => i !== index))}
-                            className="text-red-600 hover:text-red-700"
+                            className="text-red-500 hover:text-red-700 p-1 hover:bg-red-50 rounded-full transition-colors"
+                            title="Hapus"
                           >
-                            <Trash2 size={18} />
+                            <Trash2 size={16} />
                           </button>
                         </td>
                       </tr>
@@ -1054,16 +1056,17 @@ export function SetupPage() {
 
               <div className="space-y-2">
                 {timeSlots.map((slot, index) => (
-                  <div key={index} className="flex items-center justify-between p-4 bg-indigo-50 border border-indigo-200 rounded-lg">
+                  <div key={index} className="flex items-center justify-between p-3 bg-indigo-50 border border-indigo-200 rounded-lg">
                     <div className="flex items-center gap-3">
                       <span className="text-sm text-gray-600">Jam ke-{index + 1}</span>
                       <span className="text-gray-900">{slot.label}</span>
                     </div>
                     <button
                       onClick={() => setTimeSlots(timeSlots.filter((_, i) => i !== index))}
-                      className="text-red-600 hover:text-red-700"
+                      className="text-red-500 hover:text-red-700 p-1 hover:bg-red-50 rounded-full transition-colors"
+                      title="Hapus"
                     >
-                      <Trash2 size={18} />
+                      <Trash2 size={16} />
                     </button>
                   </div>
                 ))}

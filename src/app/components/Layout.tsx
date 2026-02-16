@@ -127,7 +127,7 @@ export function Layout() {
         </aside>
 
         {/* Main Content */}
-        <main className={`flex-1 p-4 md:p-6 transition-all duration-300 w-full ${!isMobile && sidebarOpen ? 'ml-64' : 'ml-0'
+        <main className={`flex-1 p-4 md:p-6 transition-all duration-300 w-full ${sidebarOpen ? 'md:ml-64' : ''
           }`}>
           <Outlet />
         </main>

@@ -44,7 +44,7 @@ export function FilterPanel({ filters, onFiltersChange }: FilterPanelProps) {
         )}
       </div>
 
-      <div className="grid grid-cols-5 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-4">
         <div>
           <label className="block text-sm text-gray-700 mb-2">Kelas</label>
           <select

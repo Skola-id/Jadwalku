@@ -8,7 +8,7 @@ import * as XLSX from "xlsx";
 export function SetupPage() {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState<'school' | 'days' | 'classes' | 'teachers' | 'rooms' | 'subjects' | 'timeslots'>('school');
-  
+
   // School Info
   const [schoolName, setSchoolName] = useState('');
   const [semester, setSemester] = useState('');
@@ -99,7 +99,7 @@ export function SetupPage() {
       subjects,
       timeSlots
     }));
-    
+
     toast.success('Setup berhasil! Mulai buat jadwal.');
     navigate('/app/dashboard');
   };
@@ -173,7 +173,7 @@ export function SetupPage() {
     const reader = new FileReader();
     reader.onload = (event) => {
       const data = event.target?.result;
-      
+
       if (file.name.endsWith('.csv')) {
         Papa.parse(data as string, {
           header: true,
@@ -200,13 +200,13 @@ export function SetupPage() {
         toast.success(`${imported.length} guru berhasil diimport!`);
       }
     };
-    
+
     if (file.name.endsWith('.csv')) {
       reader.readAsText(file);
     } else {
       reader.readAsBinaryString(file);
     }
-    
+
     e.target.value = '';
   };
 
@@ -217,7 +217,7 @@ export function SetupPage() {
     const reader = new FileReader();
     reader.onload = (event) => {
       const data = event.target?.result;
-      
+
       if (file.name.endsWith('.csv')) {
         Papa.parse(data as string, {
           header: true,
@@ -244,13 +244,13 @@ export function SetupPage() {
         toast.success(`${imported.length} ruang berhasil diimport!`);
       }
     };
-    
+
     if (file.name.endsWith('.csv')) {
       reader.readAsText(file);
     } else {
       reader.readAsBinaryString(file);
     }
-    
+
     e.target.value = '';
   };
 
@@ -261,7 +261,7 @@ export function SetupPage() {
     const reader = new FileReader();
     reader.onload = (event) => {
       const data = event.target?.result;
-      
+
       if (file.name.endsWith('.csv')) {
         Papa.parse(data as string, {
           header: true,
@@ -280,13 +280,13 @@ export function SetupPage() {
         toast.success(`${imported.length} kelas berhasil diimport!`);
       }
     };
-    
+
     if (file.name.endsWith('.csv')) {
       reader.readAsText(file);
     } else {
       reader.readAsBinaryString(file);
     }
-    
+
     e.target.value = '';
   };
 
@@ -297,7 +297,7 @@ export function SetupPage() {
     const reader = new FileReader();
     reader.onload = (event) => {
       const data = event.target?.result;
-      
+
       if (file.name.endsWith('.csv')) {
         Papa.parse(data as string, {
           header: true,
@@ -316,13 +316,13 @@ export function SetupPage() {
         toast.success(`${imported.length} hari berhasil diimport!`);
       }
     };
-    
+
     if (file.name.endsWith('.csv')) {
       reader.readAsText(file);
     } else {
       reader.readAsBinaryString(file);
     }
-    
+
     e.target.value = '';
   };
 
@@ -333,7 +333,7 @@ export function SetupPage() {
     const reader = new FileReader();
     reader.onload = (event) => {
       const data = event.target?.result;
-      
+
       if (file.name.endsWith('.csv')) {
         Papa.parse(data as string, {
           header: true,
@@ -352,13 +352,13 @@ export function SetupPage() {
         toast.success(`${imported.length} mata pelajaran berhasil diimport!`);
       }
     };
-    
+
     if (file.name.endsWith('.csv')) {
       reader.readAsText(file);
     } else {
       reader.readAsBinaryString(file);
     }
-    
+
     e.target.value = '';
   };
 
@@ -369,7 +369,7 @@ export function SetupPage() {
     const reader = new FileReader();
     reader.onload = (event) => {
       const data = event.target?.result;
-      
+
       if (file.name.endsWith('.csv')) {
         Papa.parse(data as string, {
           header: true,
@@ -396,13 +396,13 @@ export function SetupPage() {
         toast.success(`${imported.length} jam pelajaran berhasil diimport!`);
       }
     };
-    
+
     if (file.name.endsWith('.csv')) {
       reader.readAsText(file);
     } else {
       reader.readAsBinaryString(file);
     }
-    
+
     e.target.value = '';
   };
 
@@ -424,11 +424,10 @@ export function SetupPage() {
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`flex items-center gap-2 px-6 py-4 border-b-2 transition-colors whitespace-nowrap ${
-                  activeTab === tab.id
+                className={`flex items-center gap-2 px-6 py-4 border-b-2 transition-colors whitespace-nowrap ${activeTab === tab.id
                     ? 'border-emerald-600 bg-emerald-50 text-emerald-700'
                     : 'border-transparent text-gray-600 hover:bg-gray-50'
-                }`}
+                  }`}
               >
                 <tab.icon size={20} />
                 <span>{tab.label}</span>
@@ -516,10 +515,10 @@ export function SetupPage() {
                   <h2 className="text-xl text-gray-900 mb-2">Hari Sekolah</h2>
                   <p className="text-gray-600">Tentukan hari-hari aktif sekolah</p>
                 </div>
-                <div className="flex gap-2">
+                <div className="flex flex-col md:flex-row gap-2">
                   <button
                     onClick={downloadDaysTemplate}
-                    className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                    className="flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors w-full md:w-auto"
                   >
                     <Download size={18} />
                     <span>Template CSV</span>
@@ -533,7 +532,7 @@ export function SetupPage() {
                   />
                   <button
                     onClick={() => dayFileRef.current?.click()}
-                    className="flex items-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
+                    className="flex items-center justify-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors w-full md:w-auto"
                   >
                     <Upload size={18} />
                     <span>Import CSV/Excel</span>
@@ -598,10 +597,10 @@ export function SetupPage() {
                   <h2 className="text-xl text-gray-900 mb-2">Daftar Kelas</h2>
                   <p className="text-gray-600">Tentukan kelas-kelas yang ada di sekolah</p>
                 </div>
-                <div className="flex gap-2">
+                <div className="flex flex-col md:flex-row gap-2">
                   <button
                     onClick={downloadClassesTemplate}
-                    className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                    className="flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors w-full md:w-auto"
                   >
                     <Download size={18} />
                     <span>Template CSV</span>
@@ -615,7 +614,7 @@ export function SetupPage() {
                   />
                   <button
                     onClick={() => classFileRef.current?.click()}
-                    className="flex items-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
+                    className="flex items-center justify-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors w-full md:w-auto"
                   >
                     <Upload size={18} />
                     <span>Import CSV/Excel</span>
@@ -656,7 +655,7 @@ export function SetupPage() {
                 </button>
               </div>
 
-              <div className="grid grid-cols-4 gap-3">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                 {classes.map((cls, index) => (
                   <div key={index} className="flex items-center justify-between p-4 bg-blue-50 border border-blue-200 rounded-lg">
                     <span className="text-gray-900">{cls}</span>
@@ -680,10 +679,10 @@ export function SetupPage() {
                   <h2 className="text-xl text-gray-900 mb-2">Daftar Guru</h2>
                   <p className="text-gray-600">Tentukan guru dan mata pelajaran yang diampu</p>
                 </div>
-                <div className="flex gap-2">
+                <div className="flex flex-col md:flex-row gap-2">
                   <button
                     onClick={downloadTeachersTemplate}
-                    className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                    className="flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors w-full md:w-auto"
                   >
                     <Download size={18} />
                     <span>Template CSV</span>
@@ -697,7 +696,7 @@ export function SetupPage() {
                   />
                   <button
                     onClick={() => teacherFileRef.current?.click()}
-                    className="flex items-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
+                    className="flex items-center justify-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors w-full md:w-auto"
                   >
                     <Upload size={18} />
                     <span>Import CSV/Excel</span>
@@ -711,7 +710,7 @@ export function SetupPage() {
                 </p>
               </div>
 
-              <div className="grid grid-cols-3 gap-3">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                 <input
                   type="text"
                   value={newTeacher.nama}
@@ -790,10 +789,10 @@ export function SetupPage() {
                   <h2 className="text-xl text-gray-900 mb-2">Daftar Ruang</h2>
                   <p className="text-gray-600">Tentukan ruang kelas dan fasilitas</p>
                 </div>
-                <div className="flex gap-2">
+                <div className="flex flex-col md:flex-row gap-2">
                   <button
                     onClick={downloadRoomsTemplate}
-                    className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                    className="flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors w-full md:w-auto"
                   >
                     <Download size={18} />
                     <span>Template CSV</span>
@@ -807,7 +806,7 @@ export function SetupPage() {
                   />
                   <button
                     onClick={() => roomFileRef.current?.click()}
-                    className="flex items-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
+                    className="flex items-center justify-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors w-full md:w-auto"
                   >
                     <Upload size={18} />
                     <span>Import CSV/Excel</span>
@@ -821,7 +820,7 @@ export function SetupPage() {
                 </p>
               </div>
 
-              <div className="grid grid-cols-4 gap-3">
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-3">
                 <input
                   type="text"
                   value={newRoom.nama}
@@ -901,10 +900,10 @@ export function SetupPage() {
                   <h2 className="text-xl text-gray-900 mb-2">Mata Pelajaran</h2>
                   <p className="text-gray-600">Tentukan mata pelajaran yang diajarkan</p>
                 </div>
-                <div className="flex gap-2">
+                <div className="flex flex-col md:flex-row gap-2">
                   <button
                     onClick={downloadSubjectsTemplate}
-                    className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                    className="flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors w-full md:w-auto"
                   >
                     <Download size={18} />
                     <span>Template CSV</span>
@@ -918,7 +917,7 @@ export function SetupPage() {
                   />
                   <button
                     onClick={() => subjectFileRef.current?.click()}
-                    className="flex items-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
+                    className="flex items-center justify-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors w-full md:w-auto"
                   >
                     <Upload size={18} />
                     <span>Import CSV/Excel</span>
@@ -959,7 +958,7 @@ export function SetupPage() {
                 </button>
               </div>
 
-              <div className="grid grid-cols-3 gap-3">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                 {subjects.map((subject, index) => (
                   <div key={index} className="flex items-center justify-between p-4 bg-pink-50 border border-pink-200 rounded-lg">
                     <span className="text-gray-900">{subject}</span>
@@ -983,10 +982,10 @@ export function SetupPage() {
                   <h2 className="text-xl text-gray-900 mb-2">Jam Pelajaran</h2>
                   <p className="text-gray-600">Tentukan slot waktu pelajaran</p>
                 </div>
-                <div className="flex gap-2">
+                <div className="flex flex-col md:flex-row gap-2">
                   <button
                     onClick={downloadTimeslotsTemplate}
-                    className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                    className="flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors w-full md:w-auto"
                   >
                     <Download size={18} />
                     <span>Template CSV</span>
@@ -1000,7 +999,7 @@ export function SetupPage() {
                   />
                   <button
                     onClick={() => timeslotFileRef.current?.click()}
-                    className="flex items-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
+                    className="flex items-center justify-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors w-full md:w-auto"
                   >
                     <Upload size={18} />
                     <span>Import CSV/Excel</span>
@@ -1014,7 +1013,7 @@ export function SetupPage() {
                 </p>
               </div>
 
-              <div className="grid grid-cols-3 gap-3">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                 <input
                   type="time"
                   value={newTimeSlot.start}

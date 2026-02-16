@@ -45,9 +45,9 @@ export function LandingPage() {
   ];
 
   const stats = [
-    { icon: Zap, value: "100%", label: "Gratis Selamanya", color: "text-yellow-500" },
-    { icon: Target, value: "5 Menit", label: "Setup Cepat", color: "text-emerald-500" },
-    { icon: TrendingUp, value: "Auto", label: "Generate Otomatis", color: "text-blue-500" }
+    { icon: Zap, value: "Cepat", label: "Proses Instan", color: "text-yellow-600" },
+    { icon: Target, value: "Akurat", label: "Anti Bentrok", color: "text-emerald-600" },
+    { icon: TrendingUp, value: "Efisien", label: "Hemat Waktu", color: "text-blue-600" }
   ];
 
   return (
@@ -56,7 +56,7 @@ export function LandingPage() {
       <nav className="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-xl shadow-sm z-50 border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
-            <motion.div 
+            <motion.div
               className="flex items-center gap-3"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -70,7 +70,7 @@ export function LandingPage() {
                 <p className="text-xs text-gray-500">Penjadwalan Sekolah</p>
               </div>
             </motion.div>
-            <motion.div 
+            <motion.div
               className="flex items-center gap-3"
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -95,38 +95,24 @@ export function LandingPage() {
 
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 px-6 overflow-hidden">
-        {/* Background Blobs */}
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-br from-emerald-200/40 to-emerald-300/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3"></div>
-        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-tr from-yellow-200/40 to-yellow-300/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/3"></div>
-        
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div 
+            <motion.div
               className="space-y-8"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <motion.div 
-                className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-yellow-100 to-yellow-50 border border-yellow-200 text-yellow-800 rounded-full text-sm font-medium shadow-sm"
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.2 }}
-              >
-                <Sparkles size={16} />
-                <span>Solusi Modern untuk Sekolah</span>
-              </motion.div>
 
-              <h1 className="text-5xl lg:text-6xl xl:text-7xl text-gray-900 leading-[1.1]">
-                Kelola Jadwal Sekolah{" "}
-                <span className="bg-gradient-to-r from-emerald-500 to-emerald-700 bg-clip-text text-transparent">
-                  Lebih Mudah
+              <h1 className="text-5xl lg:text-6xl xl:text-7xl text-gray-900 leading-[1.1] font-bold">
+                Sistem Penjadwalan <br />
+                <span className="text-emerald-600">
+                  Sekolah Otomatis
                 </span>
               </h1>
 
-              <p className="text-xl text-gray-600 leading-relaxed">
-                Platform penjadwalan yang dirancang khusus untuk Admin TU dan Waka Kurikulum. 
-                Buat jadwal pelajaran lengkap hanya dalam hitungan menit! ⚡
+              <p className="text-xl text-gray-600 leading-relaxed max-w-lg">
+                Bantu Admin TU dan Waka Kurikulum menyusun jadwal pelajaran anti-bentrok. Hemat waktu, data terpusat, dan mudah digunakan.
               </p>
 
               <div className="flex flex-wrap gap-4 pt-2">
@@ -151,7 +137,7 @@ export function LandingPage() {
 
               <div className="flex items-center gap-8 pt-4">
                 {stats.map((stat, idx) => (
-                  <motion.div 
+                  <motion.div
                     key={idx}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -167,7 +153,7 @@ export function LandingPage() {
               </div>
             </motion.div>
 
-            <motion.div 
+            <motion.div
               className="relative"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -178,7 +164,7 @@ export function LandingPage() {
                 {/* Background decoration */}
                 <div className="absolute -top-8 -right-8 w-72 h-72 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-[3rem] rotate-6 opacity-20"></div>
                 <div className="absolute -bottom-8 -left-8 w-64 h-64 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-[3rem] -rotate-6 opacity-20"></div>
-                
+
                 {/* Main Card */}
                 <div className="relative bg-white rounded-[2.5rem] shadow-2xl shadow-gray-300/50 p-8 border border-gray-100">
                   <div className="space-y-4">
@@ -202,7 +188,7 @@ export function LandingPage() {
                       { time: "07:45 - 08:30", subject: "Bahasa Indonesia", teacher: "Pak Ahmad", room: "7A", color: "from-purple-500 to-purple-600" },
                       { time: "08:30 - 09:15", subject: "IPA", teacher: "Bu Rahma", room: "Lab IPA", color: "from-emerald-500 to-emerald-600" }
                     ].map((item, idx) => (
-                      <motion.div 
+                      <motion.div
                         key={idx}
                         className="p-5 bg-gradient-to-br from-gray-50 to-white border border-gray-100 rounded-2xl hover:shadow-md transition-all cursor-pointer group"
                         initial={{ opacity: 0, x: 20 }}
@@ -232,16 +218,13 @@ export function LandingPage() {
       </section>
 
       {/* Features Section */}
-      <section className="py-24 px-6 bg-gradient-to-b from-gray-50 to-white relative">
-        <div className="absolute top-0 left-1/4 w-[400px] h-[400px] bg-gradient-to-br from-blue-200/30 to-purple-200/30 rounded-full blur-3xl"></div>
-        
+      <section className="py-24 px-6 bg-gray-50 relative">
         <div className="max-w-7xl mx-auto relative z-10">
-          <motion.div 
+          <motion.div
             className="text-center mb-16"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
           >
             <h2 className="text-4xl lg:text-5xl text-gray-900 mb-4 font-bold">
               Fitur Lengkap untuk{" "}
@@ -254,7 +237,7 @@ export function LandingPage() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {features.map((feature, idx) => (
-              <motion.div 
+              <motion.div
                 key={idx}
                 className="group relative"
                 initial={{ opacity: 0, y: 30 }}
@@ -268,10 +251,10 @@ export function LandingPage() {
                   <div className={`inline-flex p-4 bg-gradient-to-br ${feature.color} rounded-2xl mb-5 shadow-lg group-hover:scale-110 transition-transform`}>
                     <feature.icon size={28} className="text-white" />
                   </div>
-                  
+
                   <h3 className="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
                   <p className="text-gray-600 leading-relaxed">{feature.description}</p>
-                  
+
                   {/* Hover effect */}
                   <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-500 to-blue-500 rounded-b-3xl scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
                 </div>
@@ -282,12 +265,10 @@ export function LandingPage() {
       </section>
 
       {/* Benefits Section */}
-      <section className="py-24 px-6 relative overflow-hidden">
-        {/* Background with gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-emerald-500 via-emerald-600 to-green-600"></div>
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-br from-yellow-400/30 to-yellow-500/20 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gradient-to-tr from-emerald-700/40 to-emerald-800/30 rounded-full blur-3xl"></div>
-        
+      <section className="py-24 px-6 bg-emerald-700 relative overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(#fff 1px, transparent 1px)', backgroundSize: '24px 24px' }}></div>
+
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div
@@ -302,7 +283,7 @@ export function LandingPage() {
               <p className="text-xl text-emerald-100 mb-10 leading-relaxed">
                 Sistem penjadwalan yang telah dipercaya oleh puluhan sekolah di Indonesia
               </p>
-              
+
               <div className="space-y-5">
                 {[
                   "Hemat waktu dalam penyusunan jadwal",
@@ -311,7 +292,7 @@ export function LandingPage() {
                   "Data tersimpan aman dan terorganisir",
                   "Import data dari CSV/Excel"
                 ].map((benefit, idx) => (
-                  <motion.div 
+                  <motion.div
                     key={idx}
                     className="flex items-start gap-4 group"
                     initial={{ opacity: 0, x: -20 }}
@@ -328,7 +309,7 @@ export function LandingPage() {
               </div>
             </motion.div>
 
-            <motion.div 
+            <motion.div
               className="grid grid-cols-1 gap-6"
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -340,7 +321,7 @@ export function LandingPage() {
                 { icon: Settings, title: "Import CSV/Excel", desc: "Upload data dalam sekali klik", color: "from-blue-400 to-blue-500" },
                 { icon: Calendar, title: "Real-time Updates", desc: "Perubahan langsung tersimpan", color: "from-purple-400 to-purple-500" }
               ].map((item, idx) => (
-                <motion.div 
+                <motion.div
                   key={idx}
                   className="flex items-center gap-5 p-6 bg-white/10 backdrop-blur-xl rounded-3xl border border-white/20 hover:bg-white/20 transition-all group"
                   initial={{ opacity: 0, y: 20 }}
@@ -364,11 +345,10 @@ export function LandingPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 px-6 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-yellow-400 via-yellow-500 to-orange-400"></div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-br from-white/20 to-transparent rounded-full blur-3xl"></div>
-        
-        <motion.div 
+      <section className="py-24 px-6 relative overflow-hidden bg-yellow-400">
+        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(#000 1px, transparent 1px)', backgroundSize: '24px 24px' }}></div>
+
+        <motion.div
           className="max-w-4xl mx-auto text-center relative z-10"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -381,7 +361,7 @@ export function LandingPage() {
           <p className="text-xl text-gray-800 mb-10 leading-relaxed">
             Bergabunglah dengan sekolah-sekolah yang sudah merasakan kemudahan Jadwalku
           </p>
-          
+
           <motion.button
             onClick={() => navigate('/register')}
             className="inline-flex items-center gap-3 px-12 py-5 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white rounded-full hover:shadow-2xl hover:shadow-emerald-300 transition-all text-xl font-bold group"
@@ -391,16 +371,16 @@ export function LandingPage() {
             <span>Daftar Sekarang - Gratis!</span>
             <ArrowRight size={24} className="group-hover:translate-x-2 transition-transform" />
           </motion.button>
-          
+
           <p className="text-sm text-gray-800 mt-6 flex items-center justify-center gap-2 flex-wrap">
-            <CheckCircle size={16} className="text-emerald-700" />
-            <span>Tidak perlu kartu kredit</span>
+            <CheckCircle size={16} className="text-emerald-900" />
+            <span>Mudah digunakan</span>
             <span className="text-gray-600">•</span>
-            <CheckCircle size={16} className="text-emerald-700" />
-            <span>Setup dalam 5 menit</span>
+            <CheckCircle size={16} className="text-emerald-900" />
+            <span>Fitur Lengkap</span>
             <span className="text-gray-600">•</span>
-            <CheckCircle size={16} className="text-emerald-700" />
-            <span>Support tersedia</span>
+            <CheckCircle size={16} className="text-emerald-900" />
+            <span>Support Tim Ahli</span>
           </p>
         </motion.div>
       </section>

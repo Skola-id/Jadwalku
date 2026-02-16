@@ -1,5 +1,5 @@
 
-  # Desain UI Aplikasi Penjadwalan Kelas
+  # Jadwalku - Skola
 
   ## Running the code
 

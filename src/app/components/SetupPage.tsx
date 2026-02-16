@@ -425,8 +425,8 @@ export function SetupPage() {
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
                 className={`flex items-center gap-2 px-6 py-4 border-b-2 transition-colors whitespace-nowrap ${activeTab === tab.id
-                    ? 'border-emerald-600 bg-emerald-50 text-emerald-700'
-                    : 'border-transparent text-gray-600 hover:bg-gray-50'
+                  ? 'border-emerald-600 bg-emerald-50 text-emerald-700'
+                  : 'border-transparent text-gray-600 hover:bg-gray-50'
                   }`}
               >
                 <tab.icon size={20} />
@@ -546,13 +546,13 @@ export function SetupPage() {
                 </p>
               </div>
 
-              <div className="flex gap-3">
+              <div className="flex flex-col md:flex-row gap-3">
                 <input
                   type="text"
                   value={newDay}
                   onChange={(e) => setNewDay(e.target.value)}
                   placeholder="Nama hari (contoh: Senin)"
-                  className="flex-1 px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                  className="w-full md:flex-1 px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
                   onKeyPress={(e) => {
                     if (e.key === 'Enter' && newDay.trim()) {
                       setDays([...days, newDay]);
@@ -567,21 +567,23 @@ export function SetupPage() {
                       setNewDay('');
                     }
                   }}
-                  className="px-6 py-2.5 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors"
+                  className="w-full md:w-auto flex items-center justify-center gap-2 px-6 py-2.5 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors"
                 >
                   <Plus size={20} />
+                  <span className="md:hidden">Tambah Hari</span>
                 </button>
               </div>
 
-              <div className="grid grid-cols-3 gap-3">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                 {days.map((day, index) => (
-                  <div key={index} className="flex items-center justify-between p-4 bg-emerald-50 border border-emerald-200 rounded-lg">
-                    <span className="text-gray-900">{day}</span>
+                  <div key={index} className="flex items-center justify-between p-3 bg-emerald-50 border border-emerald-200 rounded-lg">
+                    <span className="text-gray-900 truncate mr-2">{day}</span>
                     <button
                       onClick={() => setDays(days.filter((_, i) => i !== index))}
-                      className="text-red-600 hover:text-red-700"
+                      className="text-red-500 hover:text-red-700 p-1 hover:bg-red-50 rounded-full transition-colors"
+                      title="Hapus"
                     >
-                      <Trash2 size={18} />
+                      <Trash2 size={16} />
                     </button>
                   </div>
                 ))}
@@ -628,13 +630,13 @@ export function SetupPage() {
                 </p>
               </div>
 
-              <div className="flex gap-3">
+              <div className="flex flex-col md:flex-row gap-3">
                 <input
                   type="text"
                   value={newClass}
                   onChange={(e) => setNewClass(e.target.value)}
                   placeholder="Nama kelas (contoh: 7A)"
-                  className="flex-1 px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                  className="w-full md:flex-1 px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
                   onKeyPress={(e) => {
                     if (e.key === 'Enter' && newClass.trim()) {
                       setClasses([...classes, newClass]);
@@ -649,21 +651,23 @@ export function SetupPage() {
                       setNewClass('');
                     }
                   }}
-                  className="px-6 py-2.5 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors"
+                  className="w-full md:w-auto flex items-center justify-center gap-2 px-6 py-2.5 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors"
                 >
                   <Plus size={20} />
+                  <span className="md:hidden">Tambah Kelas</span>
                 </button>
               </div>
 
               <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                 {classes.map((cls, index) => (
-                  <div key={index} className="flex items-center justify-between p-4 bg-blue-50 border border-blue-200 rounded-lg">
-                    <span className="text-gray-900">{cls}</span>
+                  <div key={index} className="flex items-center justify-between p-3 bg-blue-50 border border-blue-200 rounded-lg">
+                    <span className="text-gray-900 truncate mr-2">{cls}</span>
                     <button
                       onClick={() => setClasses(classes.filter((_, i) => i !== index))}
-                      className="text-red-600 hover:text-red-700"
+                      className="text-red-500 hover:text-red-700 p-1 hover:bg-red-50 rounded-full transition-colors"
+                      title="Hapus"
                     >
-                      <Trash2 size={18} />
+                      <Trash2 size={16} />
                     </button>
                   </div>
                 ))}
@@ -710,7 +714,7 @@ export function SetupPage() {
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+              <div className="flex flex-col md:grid md:grid-cols-3 gap-3">
                 <input
                   type="text"
                   value={newTeacher.nama}
@@ -725,13 +729,13 @@ export function SetupPage() {
                   placeholder="Mata pelajaran"
                   className="px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
                 />
-                <div className="flex gap-2">
+                <div className="flex flex-col md:flex-row gap-2">
                   <input
                     type="number"
                     value={newTeacher.jamMaksimal}
                     onChange={(e) => setNewTeacher({ ...newTeacher, jamMaksimal: parseInt(e.target.value) })}
                     placeholder="Jam maks"
-                    className="flex-1 px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                    className="w-full md:flex-1 px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
                   />
                   <button
                     onClick={() => {
@@ -740,9 +744,10 @@ export function SetupPage() {
                         setNewTeacher({ nama: '', mataPelajaran: '', jamMaksimal: 24 });
                       }
                     }}
-                    className="px-6 py-2.5 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors"
+                    className="w-full md:w-auto flex items-center justify-center gap-2 px-6 py-2.5 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors"
                   >
                     <Plus size={20} />
+                    <span className="md:hidden">Tambah</span>
                   </button>
                 </div>
               </div>
@@ -820,7 +825,7 @@ export function SetupPage() {
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-3">
+              <div className="flex flex-col md:grid md:grid-cols-4 gap-3">
                 <input
                   type="text"
                   value={newRoom.nama}
@@ -852,9 +857,10 @@ export function SetupPage() {
                       setNewRoom({ nama: '', kapasitas: 32, tipe: 'kelas' });
                     }
                   }}
-                  className="px-6 py-2.5 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors"
+                  className="w-full flex items-center justify-center gap-2 px-6 py-2.5 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors"
                 >
                   <Plus size={20} />
+                  <span className="md:hidden">Tambah Ruang</span>
                 </button>
               </div>
 
@@ -931,13 +937,13 @@ export function SetupPage() {
                 </p>
               </div>
 
-              <div className="flex gap-3">
+              <div className="flex flex-col md:flex-row gap-3">
                 <input
                   type="text"
                   value={newSubject}
                   onChange={(e) => setNewSubject(e.target.value)}
                   placeholder="Nama mata pelajaran"
-                  className="flex-1 px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                  className="w-full md:flex-1 px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
                   onKeyPress={(e) => {
                     if (e.key === 'Enter' && newSubject.trim()) {
                       setSubjects([...subjects, newSubject]);
@@ -952,21 +958,23 @@ export function SetupPage() {
                       setNewSubject('');
                     }
                   }}
-                  className="px-6 py-2.5 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors"
+                  className="w-full md:w-auto flex items-center justify-center gap-2 px-6 py-2.5 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors"
                 >
                   <Plus size={20} />
+                  <span className="md:hidden">Tambah Mapel</span>
                 </button>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                 {subjects.map((subject, index) => (
-                  <div key={index} className="flex items-center justify-between p-4 bg-pink-50 border border-pink-200 rounded-lg">
-                    <span className="text-gray-900">{subject}</span>
+                  <div key={index} className="flex items-center justify-between p-3 bg-pink-50 border border-pink-200 rounded-lg">
+                    <span className="text-gray-900 truncate mr-2">{subject}</span>
                     <button
                       onClick={() => setSubjects(subjects.filter((_, i) => i !== index))}
-                      className="text-red-600 hover:text-red-700"
+                      className="text-red-500 hover:text-red-700 p-1 hover:bg-red-50 rounded-full transition-colors"
+                      title="Hapus"
                     >
-                      <Trash2 size={18} />
+                      <Trash2 size={16} />
                     </button>
                   </div>
                 ))}
@@ -1013,7 +1021,7 @@ export function SetupPage() {
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+              <div className="flex flex-col md:grid md:grid-cols-3 gap-3">
                 <input
                   type="time"
                   value={newTimeSlot.start}
@@ -1037,9 +1045,10 @@ export function SetupPage() {
                       setNewTimeSlot({ start: '', end: '' });
                     }
                   }}
-                  className="px-6 py-2.5 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors"
+                  className="w-full md:w-auto flex items-center justify-center gap-2 px-6 py-2.5 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors"
                 >
                   <Plus size={20} />
+                  <span className="md:hidden">Tambah Slot</span>
                 </button>
               </div>
 

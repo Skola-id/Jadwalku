@@ -5,7 +5,8 @@ import { useState, useEffect } from "react";
 export function Layout() {
   const location = useLocation();
   const navigate = useNavigate();
-  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [sidebarOpen, setSidebarOpen] = useState(window.innerWidth > 768);
+  const [isMobile, setIsMobile] = useState(false);
   const [schoolName, setSchoolName] = useState('SMP Nusantara');
   const [semester, setSemester] = useState('Semester Genap 2025/2026');
 
@@ -20,6 +21,22 @@ export function Layout() {
         setSemester(`Semester ${data.semester} ${data.academicYear}`);
       }
     }
+
+    const handleResize = () => {
+      if (window.innerWidth <= 768) {
+        setSidebarOpen(false);
+        setIsMobile(true);
+      } else {
+        setSidebarOpen(true);
+        setIsMobile(false);
+      }
+    };
+
+    // Initial check
+    handleResize();
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   const navigation = [
@@ -48,13 +65,13 @@ export function Layout() {
                 <Menu size={24} />
               </button>
               <div>
-                <h1 className="text-2xl">Jadwalku</h1>
-                <p className="text-sm text-emerald-100">{schoolName} - Admin TU & Waka Kurikulum</p>
+                <h1 className="text-xl md:text-2xl font-bold">Jadwalku</h1>
+                <p className="text-xs text-emerald-100 hidden sm:block">{schoolName} - Admin TU & Waka Kurikulum</p>
               </div>
             </div>
-            <div className="flex items-center gap-3">
-              <div className="px-4 py-2 bg-yellow-400 text-emerald-900 rounded-lg">
-                <span className="text-sm">{semester}</span>
+            <div className="flex items-center gap-2 md:gap-3">
+              <div className="hidden md:block px-4 py-2 bg-yellow-400 text-emerald-900 rounded-lg">
+                <span className="text-sm font-medium">{semester}</span>
               </div>
               <button
                 onClick={() => navigate('/setup')}
@@ -75,12 +92,19 @@ export function Layout() {
         </div>
       </nav>
 
-      <div className="flex pt-[88px]">
+      <div className="flex pt-[72px] md:pt-[88px]">
+        {/* Sidebar Overlay for Mobile */}
+        {isMobile && sidebarOpen && (
+          <div
+            className="fixed inset-0 bg-black/50 z-40"
+            onClick={() => setSidebarOpen(false)}
+          />
+        )}
+
         {/* Sidebar */}
         <aside
-          className={`bg-white shadow-lg transition-all duration-300 fixed left-0 top-[88px] bottom-0 ${
-            sidebarOpen ? 'w-64' : 'w-0'
-          } overflow-hidden`}
+          className={`bg-white shadow-lg transition-all duration-300 fixed left-0 top-[72px] md:top-[88px] bottom-0 z-40 ${sidebarOpen ? 'w-64 translate-x-0' : '-translate-x-full md:translate-x-0 md:w-0 md:overflow-hidden'
+            }`}
         >
           <nav className="p-4 space-y-2">
             {navigation.map((item) => {
@@ -89,11 +113,10 @@ export function Layout() {
                 <Link
                   key={item.name}
                   to={item.href}
-                  className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all ${
-                    isActive
-                      ? 'bg-emerald-100 text-emerald-700 shadow-sm'
-                      : 'text-gray-700 hover:bg-gray-100'
-                  }`}
+                  className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all ${isActive
+                    ? 'bg-emerald-100 text-emerald-700 shadow-sm'
+                    : 'text-gray-700 hover:bg-gray-100'
+                    }`}
                 >
                   <item.icon size={20} />
                   <span>{item.name}</span>
@@ -104,7 +127,8 @@ export function Layout() {
         </aside>
 
         {/* Main Content */}
-        <main className={`flex-1 p-6 transition-all duration-300 ${sidebarOpen ? 'ml-64' : 'ml-0'}`}>
+        <main className={`flex-1 p-4 md:p-6 transition-all duration-300 w-full ${!isMobile && sidebarOpen ? 'ml-64' : 'ml-0'
+          }`}>
           <Outlet />
         </main>
       </div>

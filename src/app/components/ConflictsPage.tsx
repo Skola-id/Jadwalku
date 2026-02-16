@@ -48,21 +48,21 @@ export function ConflictsPage() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <h2 className="text-3xl text-gray-900">Deteksi Bentrok Jadwal</h2>
-          <p className="text-gray-600 mt-1">
+          <h2 className="text-2xl md:text-3xl text-gray-900 font-bold">Deteksi Bentrok</h2>
+          <p className="text-sm md:text-base text-gray-600 mt-1">
             Identifikasi dan selesaikan konflik penjadwalan
           </p>
         </div>
-        <button className="flex items-center gap-2 px-5 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors shadow-md">
+        <button className="flex items-center justify-center gap-2 px-5 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors shadow-md w-full md:w-auto">
           <AlertTriangle size={18} />
           <span>Deteksi Ulang</span>
         </button>
       </div>
 
       {/* Stats */}
-      <div className="grid grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <div className="bg-white p-5 rounded-xl shadow-sm border-l-4 border-orange-500">
           <div className="text-gray-600 text-sm">Total Konflik</div>
           <div className="text-3xl text-gray-900 mt-1">{conflicts.length}</div>
@@ -94,7 +94,7 @@ export function ConflictsPage() {
           <div>
             <h3 className="text-yellow-900">Perhatian!</h3>
             <p className="text-sm text-yellow-800 mt-1">
-              Sistem menemukan {conflicts.length} konflik penjadwalan yang perlu diselesaikan. 
+              Sistem menemukan {conflicts.length} konflik penjadwalan yang perlu diselesaikan.
               Silakan tinjau dan perbaiki jadwal yang bentrok untuk menghindari masalah operasional.
             </p>
           </div>
@@ -105,7 +105,7 @@ export function ConflictsPage() {
       <div className="space-y-4">
         {conflicts.map((conflict) => {
           const conflictSchedules = getConflictSchedules(conflict.scheduleIds);
-          
+
           return (
             <div
               key={conflict.id}
@@ -115,7 +115,7 @@ export function ConflictsPage() {
                 <div className="flex-shrink-0">
                   {getSeverityIcon(conflict.tingkatKeparahan)}
                 </div>
-                
+
                 <div className="flex-1">
                   <div className="flex items-start justify-between mb-3">
                     <div>
@@ -134,8 +134,8 @@ export function ConflictsPage() {
                   {/* Affected Schedules */}
                   {conflictSchedules.length > 0 && (
                     <div className="mt-4 space-y-2">
-                      <h4 className="text-sm">Jadwal yang Terdampak:</h4>
-                      <div className="grid grid-cols-2 gap-3">
+                      <h4 className="text-sm font-medium">Jadwal yang Terdampak:</h4>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         {conflictSchedules.map((schedule) => (
                           <div
                             key={schedule.id}
@@ -168,14 +168,14 @@ export function ConflictsPage() {
                   )}
 
                   {/* Actions */}
-                  <div className="flex gap-3 mt-4">
-                    <button className="px-4 py-2 bg-white text-gray-700 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors text-sm">
+                  <div className="flex flex-wrap gap-3 mt-4">
+                    <button className="flex-1 md:flex-none px-4 py-2 bg-white text-gray-700 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors text-sm">
                       Lihat Detail
                     </button>
-                    <button className="px-4 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors text-sm">
-                      Perbaiki Jadwal
+                    <button className="flex-1 md:flex-none px-4 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors text-sm">
+                      Perbaiki
                     </button>
-                    <button className="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-colors text-sm">
+                    <button className="flex-1 md:flex-none px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-colors text-sm">
                       Abaikan
                     </button>
                   </div>
@@ -201,9 +201,9 @@ export function ConflictsPage() {
       )}
 
       {/* Legend */}
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-5">
-        <h3 className="text-sm text-gray-700 mb-3">Tingkat Keparahan:</h3>
-        <div className="flex gap-6">
+      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-5 overflow-x-auto">
+        <h3 className="text-sm text-gray-700 mb-3 font-medium">Tingkat Keparahan:</h3>
+        <div className="flex gap-6 min-w-max">
           <div className="flex items-center gap-2">
             <div className="w-4 h-4 bg-red-500 rounded"></div>
             <span className="text-sm text-gray-600">Tinggi - Harus segera diperbaiki</span>

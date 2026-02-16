@@ -19,41 +19,41 @@ export function Dashboard() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <h2 className="text-3xl text-gray-900">Dashboard Penjadwalan</h2>
-          <p className="text-gray-600 mt-1">
+          <h2 className="text-2xl md:text-3xl text-gray-900 font-bold">Dashboard</h2>
+          <p className="text-sm md:text-base text-gray-600 mt-1">
             Kelola jadwal pelajaran untuk semua kelas
           </p>
         </div>
-        <div className="flex gap-3">
+        <div className="flex flex-wrap gap-2 md:gap-3">
           <button
             onClick={() => setShowFilters(!showFilters)}
-            className="flex items-center gap-2 px-4 py-2 bg-white border-2 border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
+            className="flex items-center justify-center gap-2 px-3 py-2 bg-white border-2 border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors text-sm flex-1 md:flex-none"
           >
             <Filter size={18} />
-            <span>Filter</span>
+            <span className="hidden sm:inline">Filter</span>
           </button>
-          <button className="flex items-center gap-2 px-4 py-2 bg-yellow-400 text-gray-900 rounded-lg hover:bg-yellow-500 transition-colors shadow-md">
+          <button className="flex items-center justify-center gap-2 px-3 py-2 bg-yellow-400 text-gray-900 rounded-lg hover:bg-yellow-500 transition-colors shadow-md text-sm flex-1 md:flex-none">
             <RefreshCw size={18} />
-            <span>Generate Otomatis</span>
+            <span className="hidden sm:inline">Generate</span>
           </button>
-          <button className="flex items-center gap-2 px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors shadow-md">
+          <button className="flex items-center justify-center gap-2 px-3 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors shadow-md text-sm flex-1 md:flex-none">
             <AlertTriangle size={18} />
-            <span>Deteksi Bentrok</span>
+            <span className="hidden sm:inline">Bentrok</span>
           </button>
           <button
             onClick={() => setIsAddModalOpen(true)}
-            className="flex items-center gap-2 px-5 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors shadow-md"
+            className="flex items-center justify-center gap-2 px-4 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors shadow-md text-sm flex-1 md:flex-none font-medium"
           >
             <Plus size={18} />
-            <span>Tambah Jadwal</span>
+            <span>Tambah</span>
           </button>
         </div>
       </div>
 
       {/* Stats Cards */}
-      <div className="grid grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <div className="bg-white p-5 rounded-xl shadow-sm border-l-4 border-emerald-500">
           <div className="text-gray-600 text-sm">Total Kelas</div>
           <div className="text-3xl text-gray-900 mt-1">{classes.length}</div>

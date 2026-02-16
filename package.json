@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.1",
   "type": "module",
-  "homepage": "https://skola-id.github.io/jadwalku",
+  "homepage": "https://skola-id.github.io/Jadwalku",
   "scripts": {
     "build": "vite build",
     "dev": "vite",

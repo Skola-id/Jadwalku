@@ -62,4 +62,6 @@ export const router = createBrowserRouter([
       { path: "bentrok", Component: ConflictsPage },
     ],
   },
-]);
+], {
+  basename: import.meta.env.BASE_URL
+});

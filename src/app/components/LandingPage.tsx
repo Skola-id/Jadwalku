@@ -57,7 +57,7 @@ export function LandingPage() {
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <motion.div
-              className="flex items-center gap-3"
+              className="flex items-center gap-2 md:gap-3"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
@@ -66,8 +66,8 @@ export function LandingPage() {
                 <Calendar size={28} className="text-white" />
               </div>
               <div>
-                <h1 className="text-2xl text-gray-900">Jadwalku</h1>
-                <p className="text-xs text-gray-500">Penjadwalan Sekolah</p>
+                <h1 className="text-xl md:text-2xl text-gray-900 font-bold">Jadwalku</h1>
+                <p className="text-[10px] md:text-xs text-gray-500">Penjadwalan Sekolah</p>
               </div>
             </motion.div>
             <motion.div
@@ -78,13 +78,13 @@ export function LandingPage() {
             >
               <button
                 onClick={() => navigate('/login')}
-                className="px-6 py-2.5 text-gray-700 hover:bg-gray-100 rounded-full transition-all font-medium"
+                className="px-4 py-2 md:px-6 md:py-2.5 text-sm md:text-base text-gray-700 hover:bg-gray-100 rounded-full transition-all font-medium"
               >
                 Login
               </button>
               <button
                 onClick={() => navigate('/register')}
-                className="px-6 py-2.5 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white rounded-full hover:shadow-lg hover:shadow-emerald-200 transition-all font-medium"
+                className="px-4 py-2 md:px-6 md:py-2.5 text-sm md:text-base bg-gradient-to-r from-emerald-500 to-emerald-600 text-white rounded-full hover:shadow-lg hover:shadow-emerald-200 transition-all font-medium"
               >
                 Daftar Gratis
               </button>
@@ -94,7 +94,7 @@ export function LandingPage() {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 px-6 overflow-hidden">
+      <section className="relative pt-24 md:pt-32 pb-12 md:pb-20 px-4 md:px-6 overflow-hidden">
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -104,7 +104,7 @@ export function LandingPage() {
               transition={{ duration: 0.6 }}
             >
 
-              <h1 className="text-5xl lg:text-6xl xl:text-7xl text-gray-900 leading-[1.1] font-bold">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-gray-900 leading-[1.1] font-bold">
                 Sistem Penjadwalan <br />
                 <span className="text-emerald-600">
                   Sekolah Otomatis
@@ -118,7 +118,7 @@ export function LandingPage() {
               <div className="flex flex-wrap gap-4 pt-2">
                 <motion.button
                   onClick={() => navigate('/register')}
-                  className="flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white rounded-full hover:shadow-xl hover:shadow-emerald-200 transition-all text-lg font-medium group"
+                  className="flex items-center justify-center gap-2 px-6 py-3 md:px-8 md:py-4 w-full sm:w-auto bg-gradient-to-r from-emerald-500 to-emerald-600 text-white rounded-full hover:shadow-xl hover:shadow-emerald-200 transition-all text-base md:text-lg font-medium group"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -127,7 +127,7 @@ export function LandingPage() {
                 </motion.button>
                 <motion.button
                   onClick={() => navigate('/login')}
-                  className="px-8 py-4 border-2 border-gray-900 text-gray-900 rounded-full hover:bg-gray-900 hover:text-white transition-all text-lg font-medium"
+                  className="px-6 py-3 md:px-8 md:py-4 w-full sm:w-auto border-2 border-gray-900 text-gray-900 rounded-full hover:bg-gray-900 hover:text-white transition-all text-base md:text-lg font-medium"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -145,7 +145,7 @@ export function LandingPage() {
                   >
                     <div className="flex items-center gap-2 mb-1">
                       <stat.icon size={20} className={stat.color} />
-                      <div className="text-3xl text-gray-900 font-bold">{stat.value}</div>
+                      <div className="text-2xl md:text-3xl text-gray-900 font-bold">{stat.value}</div>
                     </div>
                     <div className="text-sm text-gray-600">{stat.label}</div>
                   </motion.div>
@@ -162,11 +162,11 @@ export function LandingPage() {
               {/* Floating Card with Schedule Preview */}
               <div className="relative">
                 {/* Background decoration */}
-                <div className="absolute -top-8 -right-8 w-72 h-72 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-[3rem] rotate-6 opacity-20"></div>
-                <div className="absolute -bottom-8 -left-8 w-64 h-64 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-[3rem] -rotate-6 opacity-20"></div>
+                <div className="absolute -top-8 -right-8 w-72 h-72 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-[3rem] rotate-6 opacity-20 hidden md:block"></div>
+                <div className="absolute -bottom-8 -left-8 w-64 h-64 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-[3rem] -rotate-6 opacity-20 hidden md:block"></div>
 
                 {/* Main Card */}
-                <div className="relative bg-white rounded-[2.5rem] shadow-2xl shadow-gray-300/50 p-8 border border-gray-100">
+                <div className="relative bg-white rounded-[2rem] md:rounded-[2.5rem] shadow-2xl shadow-gray-300/50 p-6 md:p-8 border border-gray-100">
                   <div className="space-y-4">
                     <div className="flex items-center justify-between pb-4 border-b border-gray-100">
                       <div className="flex items-center gap-3">
@@ -218,7 +218,7 @@ export function LandingPage() {
       </section>
 
       {/* Features Section */}
-      <section className="py-24 px-6 bg-gray-50 relative">
+      <section className="py-12 md:py-24 px-4 md:px-6 bg-gray-50 relative">
         <div className="max-w-7xl mx-auto relative z-10">
           <motion.div
             className="text-center mb-16"
@@ -226,7 +226,7 @@ export function LandingPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl lg:text-5xl text-gray-900 mb-4 font-bold">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl text-gray-900 mb-4 font-bold">
               Fitur Lengkap untuk{" "}
               <span className="bg-gradient-to-r from-emerald-500 to-blue-500 bg-clip-text text-transparent">
                 Sekolah Anda
@@ -265,7 +265,7 @@ export function LandingPage() {
       </section>
 
       {/* Benefits Section */}
-      <section className="py-24 px-6 bg-emerald-700 relative overflow-hidden">
+      <section className="py-12 md:py-24 px-4 md:px-6 bg-emerald-700 relative overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(#fff 1px, transparent 1px)', backgroundSize: '24px 24px' }}></div>
 
@@ -277,7 +277,7 @@ export function LandingPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-4xl lg:text-5xl text-white mb-6 font-bold leading-tight">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl text-white mb-6 font-bold leading-tight">
                 Mengapa Memilih Jadwalku?
               </h2>
               <p className="text-xl text-emerald-100 mb-10 leading-relaxed">
@@ -345,7 +345,7 @@ export function LandingPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 px-6 relative overflow-hidden bg-yellow-400">
+      <section className="py-12 md:py-24 px-4 md:px-6 relative overflow-hidden bg-yellow-400">
         <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(#000 1px, transparent 1px)', backgroundSize: '24px 24px' }}></div>
 
         <motion.div
@@ -355,7 +355,7 @@ export function LandingPage() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl lg:text-5xl text-gray-900 mb-6 font-bold leading-tight">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl text-gray-900 mb-6 font-bold leading-tight">
             Siap Membuat Jadwal Sekolah Anda?
           </h2>
           <p className="text-xl text-gray-800 mb-10 leading-relaxed">
@@ -364,7 +364,7 @@ export function LandingPage() {
 
           <motion.button
             onClick={() => navigate('/register')}
-            className="inline-flex items-center gap-3 px-12 py-5 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white rounded-full hover:shadow-2xl hover:shadow-emerald-300 transition-all text-xl font-bold group"
+            className="inline-flex items-center gap-3 px-8 py-4 md:px-12 md:py-5 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white rounded-full hover:shadow-2xl hover:shadow-emerald-300 transition-all text-lg md:text-xl font-bold group"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -386,7 +386,7 @@ export function LandingPage() {
       </section>
 
       {/* Footer */}
-      <footer className="py-12 px-6 bg-gray-900 relative">
+      <footer className="py-8 md:py-12 px-4 md:px-6 bg-gray-900 relative">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="flex items-center gap-3">

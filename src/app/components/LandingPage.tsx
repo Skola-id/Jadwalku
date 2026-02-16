@@ -57,7 +57,7 @@ export function LandingPage() {
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <motion.div
-              className="flex items-center gap-2 md:gap-3"
+              className="flex items-center gap-2"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
@@ -66,8 +66,8 @@ export function LandingPage() {
                 <Calendar size={28} className="text-white" />
               </div>
               <div>
-                <h1 className="text-xl md:text-2xl text-gray-900 font-bold">Jadwalku</h1>
-                <p className="text-[10px] md:text-xs text-gray-500">Penjadwalan Sekolah</p>
+                <h1 className="text-lg md:text-2xl text-gray-900 font-bold">Jadwalku</h1>
+                <p className="text-[10px] md:text-xs text-gray-500 hidden sm:block">Penjadwalan Sekolah</p>
               </div>
             </motion.div>
             <motion.div
@@ -78,13 +78,13 @@ export function LandingPage() {
             >
               <button
                 onClick={() => navigate('/login')}
-                className="px-4 py-2 md:px-6 md:py-2.5 text-sm md:text-base text-gray-700 hover:bg-gray-100 rounded-full transition-all font-medium"
+                className="px-3 py-1.5 md:px-6 md:py-2.5 text-xs md:text-base text-gray-700 hover:bg-gray-100 rounded-full transition-all font-medium"
               >
                 Login
               </button>
               <button
                 onClick={() => navigate('/register')}
-                className="px-4 py-2 md:px-6 md:py-2.5 text-sm md:text-base bg-gradient-to-r from-emerald-500 to-emerald-600 text-white rounded-full hover:shadow-lg hover:shadow-emerald-200 transition-all font-medium"
+                className="px-3 py-1.5 md:px-6 md:py-2.5 text-xs md:text-base bg-gradient-to-r from-emerald-500 to-emerald-600 text-white rounded-full hover:shadow-lg hover:shadow-emerald-200 transition-all font-medium"
               >
                 Daftar Gratis
               </button>
@@ -104,14 +104,14 @@ export function LandingPage() {
               transition={{ duration: 0.6 }}
             >
 
-              <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-gray-900 leading-[1.1] font-bold">
+              <h1 className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl text-gray-900 leading-tight font-bold">
                 Sistem Penjadwalan <br />
                 <span className="text-emerald-600">
                   Sekolah Otomatis
                 </span>
               </h1>
 
-              <p className="text-xl text-gray-600 leading-relaxed max-w-lg">
+              <p className="text-base md:text-xl text-gray-600 leading-relaxed max-w-lg">
                 Bantu Admin TU dan Waka Kurikulum menyusun jadwal pelajaran anti-bentrok. Hemat waktu, data terpusat, dan mudah digunakan.
               </p>
 
@@ -135,19 +135,20 @@ export function LandingPage() {
                 </motion.button>
               </div>
 
-              <div className="flex items-center gap-8 pt-4">
+              <div className="grid grid-cols-3 gap-2 md:flex md:gap-8 pt-4">
                 {stats.map((stat, idx) => (
                   <motion.div
                     key={idx}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.4 + idx * 0.1 }}
+                    className="text-center md:text-left"
                   >
-                    <div className="flex items-center gap-2 mb-1">
+                    <div className="flex flex-col md:flex-row items-center gap-1 md:gap-2 mb-1 justify-center md:justify-start">
                       <stat.icon size={20} className={stat.color} />
-                      <div className="text-2xl md:text-3xl text-gray-900 font-bold">{stat.value}</div>
+                      <div className="text-lg md:text-3xl text-gray-900 font-bold">{stat.value}</div>
                     </div>
-                    <div className="text-sm text-gray-600">{stat.label}</div>
+                    <div className="text-xs md:text-sm text-gray-600">{stat.label}</div>
                   </motion.div>
                 ))}
               </div>
